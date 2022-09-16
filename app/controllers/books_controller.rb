@@ -15,10 +15,6 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  # GET /books/1/edit
-  def edit
-  end
-
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
@@ -32,6 +28,10 @@ class BooksController < ApplicationController
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /books/1/edit
+  def edit
   end
 
   # PATCH/PUT /books/1 or /books/1.json
@@ -65,6 +65,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title)
+      params.require(:book).permit(:title, :author, :price, :date)
     end
 end
